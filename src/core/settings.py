@@ -25,7 +25,7 @@ SECRET_KEY = 'v_wi=9d4!s%pk+bj_dcf&_h&2u+3&r(n!2zy*$s=m(5wg(*228'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", "bookingtu.herokuapp.com", "127.0.0.1"]
 
 
 # Application definition
