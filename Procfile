@@ -1,1 +1,1 @@
-web: pipenv run python manage.py runserver 127.0.0.1:$PORT
+web: pipenv run python src/manage.py runserver 0.0.0.0:$PORT
