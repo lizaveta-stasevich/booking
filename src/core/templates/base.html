@@ -1,9 +1,10 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>TUTU.BY :: {% block title %}XXX{% endblock %}</title>
-	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
 	<div class="header">
