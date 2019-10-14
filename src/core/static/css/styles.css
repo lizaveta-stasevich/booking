@@ -1,0 +1,107 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Georgia, sans-serif;
+	line-height: 18px;
+	font-size: 14px;
+}
+.header{
+	background: #4682B4;
+	padding: 13px 0;
+}
+.container{
+	width: 695px;
+	margin: 0 auto;
+}
+.logo{
+	overflow: hidden;
+	margin-top: 35px;
+}
+.logo img{
+	float: left;
+	margin-right: 13px;
+}
+.logo h1{
+	font-size: 24px;
+	color: #4682B4;
+	font-family: Georgia, sans-serif;
+	margin-top: 50px;
+}
+a{
+	text-decoration: none;
+	color: #00008B;
+}
+.menu{
+	list-style: none;
+}
+.menu li{
+	display: inline-block;
+	padding-right: 50px;
+}
+.menu li a{
+	text-decoration: none;
+	color: #F5FFFA;
+}
+.menu li a::after{
+	content: "|";
+	padding-left: 50px;
+}
+.middle{
+	overflow: hidden;
+}
+.middle .main{
+	float: left;
+	width: 442px;
+}
+.middle .sidebar{
+	float: right;
+	width: 210px;
+	margin-top: 50px;
+	background: #B0C4DE;
+	padding: 20px;
+	text-align: center;
+}
+.content{
+	padding: 20px 20px;
+	margin-top: 30px;
+	background: #B0C4DE;
+	line-height: 18px;
+	color: #394d7b;
+}
+.content ul{
+	padding-left: 15px;
+}
+p{
+	color: #394d7b;
+	text-align: justify;
+}
+.footer{
+	background: #F5FFFA;
+	padding: 15px 0;
+	border-top: 1px solid #4682B4;
+	margin-top: 35px;
+}
+.train{
+	width: 150px;
+	height: auto;
+	padding-bottom: 10px;
+}
+.add{
+	font-size: 13px;
+}
+td{
+	text-align: justify;
+}
+span{
+	font-size: 12px;
+}
+.submit{
+	color:#4682B4;
+	background: white;
+	padding: 10px;
+}
+.knopka::hover{
+	background:#4682B4;
+	color: white;
+}
