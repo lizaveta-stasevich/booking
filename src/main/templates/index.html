@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load staticfiles %}
 {% block title %}Main{% endblock %}
 
 {% block content %}
@@ -19,7 +19,7 @@
 {% endblock %}
 
 {% block sidebar %}
-<img class="train" src="img/train.jpg" alt="супер-поезд">
+<img class="train" src="{% static 'img/train.jpg' %}" alt="супер-поезд">
 <p class="add">
 	К нам обращались с вопросами о детской железной дороге, но мы пошли чуть дальше!
 	<br><br>
