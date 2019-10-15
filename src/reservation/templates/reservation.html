@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}News{% endblock %}
+
+{% block content %}
+					<p>
+						<b><i>Бронирование билетов.</i></b>
+					</p>
+
+				<td>
+					<form name="record" method="POST" action="">
+
+					<table class="t_zpd">
+					<tbody>
+						<tr>
+					  		<td width="50%" colspan="2" style="padding: 0px;vertical-align: top;">
+
+							<table class="t_zpd">
+							<tbody>
+							<tr>
+								<th width="40%">Станция отправления<font color="#CC0033">*</font></th>
+								<td width="60%"><input type="text" name="textValue(nsto)" value=""></td>
+							</tr>
+							<tr>
+								<th>Станция назначения<font color="#CC0033">*</font></th>
+								<td><input type="text" name="textValue(nstn)" value=""></td>
+							</tr>
+							<tr>
+								<th>Номер поезда<font color="#CC0033">*</font></th>
+								<td><input type="text" name="textValue(poezd)" maxlength="3" value=""></td>
+							</tr>
+
+							<tr>
+								<th>Тип вагона<font color="#CC0033">*</font></th>
+								<td><select name="textValue(tip_vag)" class="input_text"><option value="" selected="selected"></option>
+							    	<option value="Л">Л - 2-местный</option>
+									<option value="Лу">Лу - 2-местный с услугами</option>
+									<option value="М">М - мягкий</option>
+									<option value="К">К - купейный</option>
+									<option value="Ку">Ку - купейный с услугами</option>
+									<option value="П">П - плацкартный</option>
+									<option value="Пу">Пу - плацкартный с услугами</option>
+									<option value="О">О - общий</option>
+									<option value="С">С - межобластной, сидячий</option></select>
+  								</td>
+							</tr>
+
+							<tr>
+								<th>Количество билетов<font color="#CC0033">*</font></th>
+								<td><select name="textValue(kol_mest)" id="kol_mest"><option value=""></option>
+							    	<option value="1">1</option>
+							    	<option value="2">2</option>
+							    	<option value="3">3</option>
+							    	<option value="4">4</option></select>
+								</td>
+							</tr>
+
+							<tr>
+								<th>Дата отправления<font color="#CC0033">*</font></th>
+								<td>
+							    <table border="0" cellspacing="0" cellpadding="0">
+							        <tbody>
+							        <tr>
+							        	<td width="99%">
+							            
+							            <input type="text" name="textValue(dat_o)" maxlength="10" value="" onclick="setDefaultValue( this, '06.10.2019' )" id="id_date_o_bt_date_o">
+							        	</td>
+							        	<td>
+							            
+							            <input type="image" id="id_date_o_bt" src="./jscalendar-1.0/img.gif" alt="..." title="Календарь для выбора даты" onmouseover="setDefaultValue( window.document.getElementById('id_date_o'), '06.10.2019' )" style="width:20; height:14px;">
+							        	</td>
+							        </tr>
+							    	</tbody>
+							    </table>
+								</td>
+							</tr>
+
+							        </tbody></table>
+							    </td>
+							</tr>
+							<tr>
+								<th colspan="2">Уточнить номер поезда можно <a href="https://poezd.rw.by/wps/portal/home/rp/schedule/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziLT1czDzcLQz8_L0NXQ0cnbx8_fyNPYwNnI31w8EKDFCAo4FTkJGTsYGBu7-RfhTp-pFNIk4_HgVR-I0P149CtcLA1xtkgnFQmLdTCNAPRlAF-LxIyJJIoCPNcToy2FA_WD_SST8yzNzYvDRdvyA3NDTCIDMgN9tREQDM5LOF/p0/IZ7_9HD6HG80NOK1E0ABJMNO3H30S1=CZ6_9HD6HG80NOK1E0ABJMNO3H30C3=LA0=Ejavax.servlet.include.path_info!QCPSelectRouteView.xhtml==/#Z7_9HD6HG80NOK1E0ABJMNO3H30S1/" style="text-decoration: none;" target="_blank">ЗДЕСЬ</a></th>
+							</tr>
+						
+
+							<tr>
+							    <th width="20%">ФИО пассажира<font color="#CC0033">*</font></th>
+							    <td width="30%"><input type="text" name="textValue(f_zakaz)" value="" onblur="fill_f_pass1(this)">
+							    </td>
+							</tr>
+							<tr>
+							    <th width="20%" style="text-align: center;">Контактный городской телефон<font color="#CC0033">*</font>
+							    </th>
+							    <td width="30%"><input type="text" name="textValue(tel)" value="">
+							    </td>
+							</tr>
+							<tr>
+							    <th>Ваш e-mail<font color="#CC0033">*</font></th>
+							  	<td><input type="text" name="textValue(email)" value=""></td>
+							  	<td colspan="2"></td>
+							</tr>
+
+
+							</tbody></table>
+							<span class="knopka">
+							<input type="button" name="send_z" value="Забронировать" class="submit"><br>
+							</span>
+					
+					</tbody>
+				</table>
+			</form>
+{% endblock %}
+{% block sidebar %}
+  	<td width="50%" colspan="2" style="padding: 0px;vertical-align: top;">
+	<table class="t_zpd">
+	<tbody><tr>
+  	<th style="text-align: center;">Условия проезда</th>
+	</tr>
+
+	<tr>
+	  <td><input type="checkbox" name="o_usl1" value="Кроме боковых мест" class="check2"><span>Кроме боковых мест</span>
+	  </td>
+	</tr>
+
+	<tr>
+	  <td><input type="checkbox" name="o_usl1" value="В начале и конце вагона не предлагать" class="check2"><span>В начале и конце вагона не предлагать</span>
+	  </td>
+	</tr>
+
+	<tr>
+	  <td><input type="checkbox" name="o_usl1" value="В разных купе не предлагать" class="check2"><span>В разных купе не предлагать</span>
+	  </td>
+	</tr>
+
+	<tr>
+	  <td><input type="checkbox" name="o_usl1" value="При отсутствии плацкартных мест предложить купейные" class="check2"><span>При отсутствии плацкартных мест предложить купейные</span>
+	  </td>
+	</tr>
+
+	<tr>
+	  <td><input type="checkbox" name="o_usl1" value="При отсутствии купейных мест предложить плацкартные" class="check2"><span>При отсутствии купейных мест предложить плацкартные</span>
+	  </td>
+	</tr>
+
+	<tr>
+	  <td><input type="checkbox" name="o_usl1" value="Хотя бы одно нижнее" class="check2"><span>Хотя бы одно нижнее</span>
+	  </td>
+	</tr>
+
+	<tr>
+	  <td><input type="checkbox" name="o_usl1" value="При отсутствии мест на данный поезд предложить другой" class="check2"><span>При отсутствии мест на данный поезд предложить другой</span>
+	  </td>
+	</tr>
+
+	<tr>
+	  <td><input type="checkbox" name="o_usl1" value="Беспересадочный вагон" class="check2"><span>Беспересадочный вагон</span>
+	  </td>
+	</tr>
+
+	</tbody></table>
+
+	  </td>
+	</tr>
+{% endblock %}
