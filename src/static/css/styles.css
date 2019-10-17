@@ -22,7 +22,7 @@
 	float: left;
 	margin-right: 13px;
 }
-.logo h1{
+.logo > h1{
 	font-size: 24px;
 	color: #4682B4;
 	font-family: Georgia, sans-serif;
@@ -35,15 +35,15 @@ a{
 .menu{
 	list-style: none;
 }
-.menu li{
+.menu > li{
 	display: inline-block;
 	padding-right: 50px;
 }
-.menu li a{
+.menu > li > a{
 	text-decoration: none;
 	color: #F5FFFA;
 }
-.menu li a::after{
+.menu > li > a::after{
 	content: "|";
 	padding-left: 50px;
 }
@@ -69,7 +69,7 @@ a{
 	line-height: 18px;
 	color: #394d7b;
 }
-.content ul{
+.content > ul{
 	padding-left: 15px;
 }
 p{
@@ -100,8 +100,4 @@ span{
 	color:#4682B4;
 	background: white;
 	padding: 10px;
-}
-.knopka::hover{
-	background:#4682B4;
-	color: white;
 }
