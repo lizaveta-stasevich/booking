@@ -12,11 +12,12 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
+import dj_database_url
+
 from dynaconf import settings as _settings
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -28,7 +29,6 @@ SECRET_KEY = _settings.SECRET_KEY
 DEBUG = _settings.DEBUG
 
 ALLOWED_HOSTS = _settings.ALLOWED_HOSTS
-
 
 # Application definition
 
@@ -74,17 +74,20 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+db_url = _settings.DATABASE_URL
+if _settings.ENV_FOR_DYNACONF == "heroku":
+    db_url = os.getenv("DATABASE_URL")
 
+DATABASES = {
+    # 'default': {
+    #   'ENGINE': 'django.db.backends.sqlite3',
+    #  'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    #    }
+    "default": dj_database_url.parse(db_url, conn_max_age=600),
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -104,7 +107,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
@@ -117,7 +119,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/

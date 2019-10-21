@@ -20,12 +20,35 @@
 				</tr>
 				<tr>
 					<th>Куда<font color="#CC0033">*</font></th>
-					<td><input type="text" name="textValue(to)" value=""></td>
+					<td><select name="textValue(from)" class="input_text"><option value="" selected="selected"></option>
+				    	{% for city in cities %}
+							<option value="*">{{city.name}}</option>
+						{% endfor %}
+						</select>
+					</td>
 				</tr>
 				<tr>
-					<th>Номер поезда<font color="#CC0033">*</font></th>
-					<td><input type="text" name="textValue(train)" maxlength="3" value=""></td>
+					<th>Время отправления<font color="#CC0033">*</font></th>
+					<td><select name="textValue(train_num)" class="input_text"><option value="" selected="selected"></option>
+				    	{% for train in trains %}
+							<option value="*">{{train.departure_time}}</option>
+						{% endfor %}
+						{% if train in trains %}
+
+						{% endif %}
+						</select></td>
 				</tr>
+				{% if train in trains %}
+				<tr>
+					<th>Время прибытия<font color="#CC0033">*</font></th>
+					<td><select name="textValue(train_num)" class="input_text"><option value="" selected="selected"></option>
+				    	{% for train in trains %}
+							<option value="*">{{train.arrival_time}}</option>
+						{% endfor %}
+						</select></td>
+				</tr>
+				{% endif %}
+
 				<tr>
 					<th>Тип вагона<font color="#CC0033">*</font></th>
 					<td><select name="textValue(type_vag)" class="input_text"><option value="" selected="selected"></option>

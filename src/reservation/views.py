@@ -7,5 +7,3 @@ def reservation(request):
     return render(request, "reservation.html", context={
         "cities": City.objects.all(),
     })
-
-
