@@ -11,9 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-
 import dj_database_url
-
 from dynaconf import settings as _settings
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -125,5 +123,3 @@ USE_TZ = True
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [STATIC_DIR, ]
 STATIC_URL = '/static/'
-
-MEDIA_URL = ''
