@@ -4,6 +4,6 @@ from reservation.models import City
 
 # Create your views here.
 def reservation(request):
-    return render(request, "reservation.html", context={
+    return render(request, "reservation/reservation.html", context={
         "cities": City.objects.all(),
     })
