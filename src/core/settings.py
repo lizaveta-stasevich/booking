@@ -15,8 +15,7 @@ import dj_database_url
 from dynaconf import settings as _settings
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+BASE_DIR = Path(__file__).parent.parent.resolve()
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
@@ -44,6 +43,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -57,7 +57,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [f"{BASE_DIR}/core/templates"],
+        "DIRS": [BASE_DIR / "core" / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,11 +80,11 @@ if _settings.ENV_FOR_DYNACONF == "heroku":
     db_url = os.getenv("DATABASE_URL")
 
 DATABASES = {
-    # 'default': {
-    #   'ENGINE': 'django.db.backends.sqlite3',
-    #  'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    #    }
-    "default": dj_database_url.parse(db_url, conn_max_age=600),
+    'default': {
+      'ENGINE': 'django.db.backends.sqlite3',
+     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+       }
+    # "default": dj_database_url.parse(db_url, conn_max_age=600),
 }
 
 # Password validation
@@ -120,6 +120,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-STATIC_DIR = (os.path.join(BASE_DIR, 'static'), '/src/static/')
-STATICFILES_DIRS = [STATIC_DIR, ]
-STATIC_URL = '/static/'
+STATIC_DIR = BASE_DIR / "static"
+STATIC_DIR.mkdir(exist_ok=True)
+STATIC_ROOT = STATIC_DIR.as_posix()
+
+STATIC_URL = "/static/"
