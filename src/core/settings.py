@@ -83,11 +83,14 @@ if _settings.ENV_FOR_DYNACONF == "heroku":
     db_url = os.getenv("DATABASE_URL")
 
 DATABASES = {
-    #'default': {
-     # 'ENGINE': 'django.db.backends.sqlite3',
-      #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-       #}
+    # 'default': {
+    #  'ENGINE': 'django.db.backends.sqlite3',
+    #  'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    #  }
     "default": dj_database_url.parse(db_url, conn_max_age=600),
+    # "default": dj_database_url.parse(
+    # "postgres://eiukwqjnewhbjx:808cf08c6babab50d9c6e9c820d0c29ff128e0c633157c500b2bb5c812a65d18@ec2-54-247-171-30
+    # .eu-west-1.compute.amazonaws.com:5432/ddgfrr1aqepklr", conn_max_age=600),
 }
 
 # Password validation

@@ -31,11 +31,9 @@
 					<th>Время отправления<font color="#CC0033">*</font></th>
 					<td><select name="textValue(train_num)" class="input_text"><option value="" selected="selected"></option>
 				    	{% for train in trains %}
-							<option value="*">{{train.departure_time}}</option>
+							<option value="*">{{train.dep_time}}</option>
 						{% endfor %}
-						{% if train in trains %}
 
-						{% endif %}
 						</select></td>
 				</tr>
 				{% if train in trains %}
