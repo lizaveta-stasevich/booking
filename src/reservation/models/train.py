@@ -9,7 +9,7 @@ class Train(m.Model):
     arr_station = m.ForeignKey(City, on_delete=m.CASCADE, related_name='arrival')
     dep_time = m.TimeField()
     arr_time = m.TimeField()
-    carriage_type = m.CharField(max_length=20)
+    carriage_type = m.ForeignKey("Carriage", on_delete=m.CASCADE, related_name='type_of_carriage')
 
     class Meta:
         verbose_name_plural = "trains"
