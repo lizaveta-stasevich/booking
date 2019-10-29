@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'main',
     'news',
     'reservation',
+    'ticket',
 ]
 
 MIDDLEWARE = [

@@ -1,15 +1,26 @@
+from math import sqrt
 from django.db import models as m
 
 from reservation.models import City
 
 
 class Train(m.Model):
+    COACH = 'ОБЩ'
+    LOUNGE = 'ПЛЦ'
+    SLEEPING = 'КУП'
+    PLACE_CHOICES = [
+        (COACH, "Общий"),
+        (LOUNGE, "Плацкартный"),
+        (SLEEPING, "Купейный"),
+        (None, '---'),
+    ]
     num = m.IntegerField(unique=True)
     dep_station = m.ForeignKey(City, on_delete=m.CASCADE, related_name='departure')
     arr_station = m.ForeignKey(City, on_delete=m.CASCADE, related_name='arrival')
+
     dep_time = m.TimeField()
     arr_time = m.TimeField()
-    carriage_type = m.ForeignKey("Carriage", on_delete=m.CASCADE, related_name='type_of_carriage')
+    place_type = m.CharField(max_length=3, choices=PLACE_CHOICES, default='')
 
     class Meta:
         verbose_name_plural = "trains"
@@ -20,3 +31,18 @@ class Train(m.Model):
 
     def __str__(self):
         return f"{self.dep_station} - {self.arr_station} ({self.pk})"
+
+    def distance(self):
+        degrees = sqrt(
+            (self.arr_station.lat - self.dep_station.lat) ** 2 + (self.dep_station.lon - self.arr_station.lon) ** 2
+        )
+        return degrees * 83.0790026
+
+    def price(self):
+        classes_dict = {
+            'COACH': 0.018,
+            'LOUNGE': 0.03,
+            'SLEEPING': 0.05,
+        }
+        p = self.distance() * classes_dict[self.place_type]
+        return p

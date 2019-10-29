@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from reservation.models import City, Train, Passenger, Carriage
+from reservation.models import City, Train, Passenger
 
 
 # Create your views here.
@@ -8,5 +8,4 @@ def reservation(request):
         "cities": City.objects.all(),
         "trains": Train.objects.all(),
         "passengers": Passenger.objects.all(),
-        "carriages": Carriage.objects.all(),
     })
