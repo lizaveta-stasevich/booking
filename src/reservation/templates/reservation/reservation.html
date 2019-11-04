@@ -30,54 +30,26 @@
 				<tr>
 					<th>Время отправления<font color="#CC0033">*</font></th>
 					<td><select name="textValue(train_num)" class="input_text"><option value="" selected="selected"></option>
-				    	{% for train in trains %}
 							<option value="*">{{train.dep_time}}</option>
-						{% endfor %}
-
 						</select></td>
 				</tr>
-				{% if train in trains %}
 				<tr>
 					<th>Время прибытия<font color="#CC0033">*</font></th>
 					<td><select name="textValue(train_num)" class="input_text"><option value="" selected="selected"></option>
-				    	{% for train in trains %}
 							<option value="*">{{train.arrival_time}}</option>
-						{% endfor %}
 						</select></td>
 				</tr>
-				{% endif %}
 
 				<tr>
-					<th>Тип вагона<font color="#CC0033">*</font></th>
-					<td><select name="textValue(type_vag)" class="input_text"><option value="" selected="selected"></option>
-				    	<option value="Л">Л - 2-местный</option>
-						<option value="Лу">Лу - 2-местный с услугами</option>
-						<option value="М">М - мягкий</option>
-						<option value="К">К - купейный</option>
-						<option value="Ку">Ку - купейный с услугами</option>
-						<option value="П">П - плацкартный</option>
-						<option value="Пу">Пу - плацкартный с услугами</option>
-						<option value="О">О - общий</option>
-						<option value="С">С - межобластной, сидячий</option></select>
-					</td>
+					<th>Тип места<font color="#CC0033">*</font></th>
+					<td><select name="textValue(place_type)" class="input_text"><option value="" selected="selected"></option>
+							<option value="*">{{train.place_type}}</option>
+					</select></td>
 				</tr>
 				<tr>
-					<th>Количество билетов<font color="#CC0033">*</font></th>
-					<td><select name="textValue(kol_tickets)" id="kol_tickets"><option value=""></option>
-				    	<option value="1">1</option>
-				    	<option value="2">2</option>
-				    	<option value="3">3</option>
-				    	<option value="4">4</option></select>
-					</td>
-				</tr>
-				<tr>
-					<th>Дата отправления<font color="#CC0033">*</font></th>
-					<td><input type="date" name="calendar">
-					</td>
-				</tr>
-				<tr>
-				    <th width="20%">ФИО пассажира<font color="#CC0033">*</font></th>
+				    <th width="20%">Фамилия<font color="#CC0033">*</font></th>
 				    <td width="30%"><input type="text" name="textValue(passenger)" value="" >
+						{{passenger.surname}}
 				    </td>
 				</tr>
 				<tr>
@@ -92,8 +64,8 @@
 				  	<td colspan="2"></td>
 				</tr>
 			</table>
-			<span class="knopka">
-				<input type="button" name="send_record" value="Забронировать" class="submit"><br>
+			<span>
+				<a href="/ticket/"><input type="button" name="send_record" value="Забронировать" class="submit"></a>
 			</span>
 		</form>
 {% endblock %}

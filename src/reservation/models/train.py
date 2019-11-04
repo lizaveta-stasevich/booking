@@ -17,10 +17,9 @@ class Train(m.Model):
     num = m.IntegerField(unique=True)
     dep_station = m.ForeignKey(City, on_delete=m.CASCADE, related_name='departure')
     arr_station = m.ForeignKey(City, on_delete=m.CASCADE, related_name='arrival')
-
     dep_time = m.TimeField()
     arr_time = m.TimeField()
-    place_type = m.CharField(max_length=3, choices=PLACE_CHOICES, default='')
+    place_type = m.CharField(max_length=3, choices=PLACE_CHOICES, blank=True, default='')
 
     class Meta:
         verbose_name_plural = "trains"
@@ -40,9 +39,9 @@ class Train(m.Model):
 
     def price(self):
         classes_dict = {
-            'COACH': 0.018,
-            'LOUNGE': 0.03,
-            'SLEEPING': 0.05,
+            'ОБЩ': 0.018,
+            'ПЛЦ': 0.03,
+            'КУП': 0.05,
         }
-        p = self.distance() * classes_dict[self.place_type]
+        p = round(self.distance() * classes_dict[self.place_type], 2)
         return p
