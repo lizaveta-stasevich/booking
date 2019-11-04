@@ -29,27 +29,35 @@
 				</tr>
 				<tr>
 					<th>Время отправления<font color="#CC0033">*</font></th>
-					<td><select name="textValue(train_num)" class="input_text"><option value="" selected="selected"></option>
+					<td><select name="textValue(train_num)" class="input_text">
 							<option value="*">{{train.dep_time}}</option>
 						</select></td>
 				</tr>
 				<tr>
 					<th>Время прибытия<font color="#CC0033">*</font></th>
-					<td><select name="textValue(train_num)" class="input_text"><option value="" selected="selected"></option>
+					<td><select name="textValue(train_num)" class="input_text">
 							<option value="*">{{train.arrival_time}}</option>
 						</select></td>
 				</tr>
 
 				<tr>
 					<th>Тип места<font color="#CC0033">*</font></th>
-					<td><select name="textValue(place_type)" class="input_text"><option value="" selected="selected"></option>
-							<option value="*">{{train.place_type}}</option>
+					<td><select name="textValue(place_type)" class="input_text">
+						{% for type in types %}
+							<option value="{{type.0}}">{{type.1}}</option>
+						{% endfor %}
 					</select></td>
 				</tr>
 				<tr>
 				    <th width="20%">Фамилия<font color="#CC0033">*</font></th>
 				    <td width="30%"><input type="text" name="textValue(passenger)" value="" >
 						{{passenger.surname}}
+				    </td>
+				</tr>
+				<tr>
+				    <th width="20%">Имя<font color="#CC0033">*</font></th>
+				    <td width="30%"><input type="text" name="textValue(passenger)" value="" >
+						{{passenger.name}}
 				    </td>
 				</tr>
 				<tr>
@@ -70,21 +78,4 @@
 		</form>
 {% endblock %}
 {% block sidebar %}
-<table>
-	<tr>
-	  	<th style="text-align: center;">Условия проезда</th>
-	</tr>
-	<tr>
-	    <td><input type="checkbox" value="Кроме боковых мест"><span>Кроме боковых мест</span>
-	    </td>
-	</tr>
-	<tr>
-	    <td><input type="checkbox" value="В начале и конце вагона не предлагать"><span>В начале и конце вагона не предлагать</span>
-		</td>
-	</tr>
-	<tr>
-	    <td><input type="checkbox" value="Хотя бы одно нижнее"><span>Хотя бы одно нижнее</span>
-	    </td>
-	</tr>
-</table>
 {% endblock %}

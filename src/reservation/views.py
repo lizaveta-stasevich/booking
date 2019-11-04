@@ -8,4 +8,5 @@ def reservation(request):
         "cities": City.objects.all(),
         "trains": Train.objects.all(),
         "passengers": Passenger.objects.all(),
+        "types": Train.PLACE_CHOICES,
     })
