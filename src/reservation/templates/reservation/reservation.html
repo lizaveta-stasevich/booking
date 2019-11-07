@@ -3,79 +3,28 @@
 {% block title %}News{% endblock %}
 
 {% block content %}
-	<p>
-		<b><i>Бронирование билетов.</i></b>
-	</p>
+<p><b><i>Бронирование билетов.</i></b></p>
+<form id='reservation' method="get" action="{% url 'reservation' %}">
+	{{form.as_p}}
+	<button type="submit">Забронировать</button>
+</form>
 
-		<form name="record" method="POST" action="" autocomplete="on">
-			<table>
-				<tr>
-					<th>Откуда<font color="#CC0033">*</font></th>
-					<td><select name="textValue(from)" class="input_text"><option value="" selected="selected"></option>
-				    	{% for city in cities %}
-							<option value="*">{{city.name}}</option>
-						{% endfor %}
-						</select>
-  					</td>
-				</tr>
-				<tr>
-					<th>Куда<font color="#CC0033">*</font></th>
-					<td><select name="textValue(from)" class="input_text"><option value="" selected="selected"></option>
-				    	{% for city in cities %}
-							<option value="*">{{city.name}}</option>
-						{% endfor %}
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<th>Время отправления<font color="#CC0033">*</font></th>
-					<td><select name="textValue(train_num)" class="input_text">
-							<option value="*">{{train.dep_time}}</option>
-						</select></td>
-				</tr>
-				<tr>
-					<th>Время прибытия<font color="#CC0033">*</font></th>
-					<td><select name="textValue(train_num)" class="input_text">
-							<option value="*">{{train.arrival_time}}</option>
-						</select></td>
-				</tr>
+<div>
 
-				<tr>
-					<th>Тип места<font color="#CC0033">*</font></th>
-					<td><select name="textValue(place_type)" class="input_text">
-						{% for type in types %}
-							<option value="{{type.0}}">{{type.1}}</option>
-						{% endfor %}
-					</select></td>
-				</tr>
-				<tr>
-				    <th width="20%">Фамилия<font color="#CC0033">*</font></th>
-				    <td width="30%"><input type="text" name="textValue(passenger)" value="" >
-						{{passenger.surname}}
-				    </td>
-				</tr>
-				<tr>
-				    <th width="20%">Имя<font color="#CC0033">*</font></th>
-				    <td width="30%"><input type="text" name="textValue(passenger)" value="" >
-						{{passenger.name}}
-				    </td>
-				</tr>
-				<tr>
-				    <th width="20%" style="text-align: center;">Телефон<font color="#CC0033">*</font>
-				    </th>
-				    <td width="30%"><input type="text" name="textValue(tel)" value="">
-				    </td>
-				</tr>
-				<tr>
-				    <th>E-mail<font color="#CC0033">*</font></th>
-				  	<td><input type="text" name="textValue(email)" value=""></td>
-				  	<td colspan="2"></td>
-				</tr>
-			</table>
-			<span>
-				<a href="/ticket/"><input type="button" name="send_record" value="Забронировать" class="submit"></a>
-			</span>
-		</form>
+	{% for res in object_list %}
+
+	<div style="background: #4682B4">
+		<div><span>{{res.city.dep_station} - {res.train.arr_station}</span></div>
+		<div>
+			<ul>
+				<li class="li--{{res.train.dep_time}}">{{res.train.dep_time}}</li>
+			</ul>
+		</div>
+	</div>
+
+	{% endfor %}
+</div>
 {% endblock %}
+
 {% block sidebar %}
 {% endblock %}

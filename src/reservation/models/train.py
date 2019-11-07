@@ -16,7 +16,6 @@ class Train(m.Model):
     num = m.IntegerField(unique=True)
     dep_station = m.ForeignKey(City, on_delete=m.CASCADE, related_name='departure')
     arr_station = m.ForeignKey(City, on_delete=m.CASCADE, related_name='arrival')
-    date = m.DateField()
     dep_time = m.TimeField()
     arr_time = m.TimeField()
     place_type = m.CharField(max_length=3, choices=PLACE_CHOICES, default='')

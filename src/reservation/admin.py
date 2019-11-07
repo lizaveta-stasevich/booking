@@ -5,3 +5,4 @@ from reservation import models
 admin.site.register(models.City)
 admin.site.register(models.Train)
 admin.site.register(models.Passenger)
+admin.site.register(models.Reservate)
