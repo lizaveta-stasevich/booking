@@ -13,7 +13,7 @@ class Train(m.Model):
         (LOUNGE, "Плацкартный"),
         (SLEEPING, "Купейный"),
     ]
-    num = m.IntegerField(unique=True)
+    num = m.CharField(max_length=3, default='', unique=True)
     dep_station = m.ForeignKey(City, on_delete=m.CASCADE, related_name='departure')
     arr_station = m.ForeignKey(City, on_delete=m.CASCADE, related_name='arrival')
     dep_time = m.TimeField()
@@ -28,7 +28,7 @@ class Train(m.Model):
         return f"Train №{self.pk}: from {self.dep_station} to {self.arr_station}"
 
     def __str__(self):
-        return f"{self.dep_station} - {self.arr_station} ({self.pk})"
+        return f"{self.dep_station} - {self.arr_station}"
 
     def distance(self):
         degrees = sqrt(
@@ -42,5 +42,8 @@ class Train(m.Model):
             'ПЛЦ': 0.03,
             'КУП': 0.05,
         }
-        p = round(self.distance() * classes_dict[self.place_type], 2)
+        p = round(self.distance() * classes_dict[self.place_type])
         return p
+
+    def get_absolute_url(self):
+        return f"{reverse('train-detail', args=[str(self.pk)])}"

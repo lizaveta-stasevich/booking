@@ -11,13 +11,16 @@
 
 <div>
 
-	{% for res in object_list %}
+	{% for train in object_list %}
 
-	<div style="background: #4682B4">
-		<div><span>{{res.city.dep_station} - {res.train.arr_station}</span></div>
+	<div style="background: #4682B4; width: 400px">
+		<div><span>Поезд: {{train.dep_station}} - {{train.arr_station}}</span></div>
+		<div><span>Номер поезда: {{train.num}}</span></div>
 		<div>
 			<ul>
-				<li class="li--{{res.train.dep_time}}">{{res.train.dep_time}}</li>
+				<li class="li--{{train.dep_time}}">Время отправления: {{train.dep_time}}</li>
+				<li class="li--{{train.arr_time}}">Время прибытия: {{train.arr_time}}</li>
+				<li class="li--{{train.place_type}}">{{train.place_type}}</li>
 			</ul>
 		</div>
 	</div>

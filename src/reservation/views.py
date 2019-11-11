@@ -1,12 +1,12 @@
 from django.views.generic import ListView
 from reservation.forms import SearchForm
-from reservation.models import Reservate
+from reservation.models import Train
 
 
 class ReservateView(ListView):
     http_method_names = ("get", "post")
     template_name = "reservation/reservation.html"
-    model = Reservate
+    model = Train
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -16,6 +16,8 @@ class ReservateView(ListView):
         return context
 
     def get_queryset(self):
+        if not self.request.GET:
+            return []
         qs = super().get_queryset()
 
         if self.request.GET:
