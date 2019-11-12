@@ -1,6 +1,6 @@
 from django.views.generic import ListView
-from reservation.forms import SearchForm
-from reservation.models import Train
+from apps.reservation.forms import SearchForm
+from apps.reservation.models import Train
 
 
 class ReservateView(ListView):

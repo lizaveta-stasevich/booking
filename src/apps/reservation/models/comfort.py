@@ -14,6 +14,7 @@ class Comfort(m.Model):
 
     class Meta:
         verbose_name_plural = "place_types"
+        ordering = ['pk']
 
     def __repr__(self):
         return f"{self.place_type}"

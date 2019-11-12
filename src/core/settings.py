@@ -19,6 +19,7 @@ from dynaconf import settings as _settings
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(__file__).parent.parent.resolve()
+PROJECT_DIR = BASE_DIR / "core"
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
@@ -39,10 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'main',
-    'news',
-    'reservation',
-    'ticket',
+    'apps.api'
+    'apps.main',
+    'apps.news',
+    'apps.reservation',
+    'apps.ticket',
 ]
 
 MIDDLEWARE = [
@@ -132,3 +134,5 @@ STATIC_DIR.mkdir(exist_ok=True)
 STATIC_ROOT = STATIC_DIR.as_posix()
 
 STATIC_URL = "/static/"
+
+STATICFILES_DIRS = [PROJECT_DIR / 'static']

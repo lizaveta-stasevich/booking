@@ -1,7 +1,7 @@
 from math import sqrt
 from django.db import models as m
 
-from reservation.models import City
+from apps.reservation.models import City
 
 
 class Train(m.Model):
