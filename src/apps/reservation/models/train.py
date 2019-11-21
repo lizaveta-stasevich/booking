@@ -1,6 +1,7 @@
 from math import sqrt
 from django.db import models as m
-
+from django.urls import reverse
+from django.conf import settings
 from apps.reservation.models import City
 
 
@@ -13,6 +14,7 @@ class Train(m.Model):
         (LOUNGE, "Плацкартный"),
         (SLEEPING, "Купейный"),
     ]
+    user = m.ForeignKey(settings.AUTH_USER_MODEL, on_delete=m.CASCADE, related_name="user_info", default="1")
     num = m.CharField(max_length=3, default='', unique=True)
     dep_station = m.ForeignKey(City, on_delete=m.CASCADE, related_name='departure')
     arr_station = m.ForeignKey(City, on_delete=m.CASCADE, related_name='arrival')

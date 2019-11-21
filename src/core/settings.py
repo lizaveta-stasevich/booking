@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 from pathlib import Path
-
+from django.urls import reverse_lazy
 import dj_database_url
 from dynaconf import settings as _settings
 
@@ -40,11 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.api'
     'apps.main',
     'apps.news',
     'apps.reservation',
-    'apps.ticket',
+    'apps.user',
 ]
 
 MIDDLEWARE = [
@@ -136,3 +135,12 @@ STATIC_ROOT = STATIC_DIR.as_posix()
 STATIC_URL = "/static/"
 
 STATICFILES_DIRS = [PROJECT_DIR / 'static']
+
+LOGIN_URL = reverse_lazy("login")
+LOGIN_REDIRECT_URL = reverse_lazy("main")
+LOGOUT_URL = reverse_lazy("main")
+
+
+PASSWORD_HASHERS = [
+    "django.contrib.auth.hashers.BCryptSHA256PasswordHasher",
+]

@@ -1,4 +1,4 @@
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from apps.reservation.forms import SearchForm
 from apps.reservation.models import Train
 
@@ -31,3 +31,8 @@ class ReservateView(ListView):
                     qs = qs.filter(place_type=f.cleaned_data["place_type"])
 
         return qs
+
+
+class TicketView(DetailView):
+    template_name = "reservation/ticket.html"
+    model = Train
