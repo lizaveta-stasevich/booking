@@ -6,23 +6,26 @@
 <p><b><i>Бронирование билетов.</i></b></p>
 <form id='reservation' method="get" action="{% url 'reservation' %}">
 	{{form.as_p}}
-	<button type="submit">Забронировать</button>
+	<button type="submit">Показать поезда</button>
 </form>
+<br>
+<br>
 
 <div>
 
 	{% for train in object_list %}
 
-	<div style="background: #4682B4; width: 400px">
-		<div><span>Поезд: {{train.dep_station}} - {{train.arr_station}}</span></div>
-		<div><span>Номер поезда: {{train.num}}</span></div>
+	<div style="background: #4f77bf; width: 300px; list-style: none; color: white; padding: 10px; text-align: left">
+		<div>Поезд: <b>{{train.dep_station}} - {{train.arr_station}}</b></div>
+		<div>Номер поезда: <b>{{train.num}}</b></div>
 		<div>
-			<ul>
+			<ul style="list-style: none">
 				<li class="li--{{train.dep_time}}">Время отправления: {{train.dep_time}}</li>
 				<li class="li--{{train.arr_time}}">Время прибытия: {{train.arr_time}}</li>
-				<li class="li--{{train.place_type}}">{{train.place_type}}</li>
+				<li class="li--{{train.place_type}}">Место: {{train.place_type}}</li>
 			</ul>
 		</div>
+		<a href="{% url 'train-detail' pk=train.pk %}"><button type="submit">Забронировать</button></a>
 	</div>
 
 	{% endfor %}
@@ -30,4 +33,10 @@
 {% endblock %}
 
 {% block sidebar %}
+<p>
+	В этом разделе вы можете <i>забронировать билет на нужный поезд</i>. <br><br>
+	Для этого следует выбрать пункт отправления и пункт прибытия, и Вам будут показаны все подходящие поезда.<br><br>
+	Чтобы забронировать один из них - просто кликните на кнопку "<b>забронировать</b>". <br><br>
+	<i>Приятного пользования нашим сервисом!</i>
+</p>
 {% endblock %}
